@@ -2,6 +2,9 @@ import "../globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { ClerkProvider } from "@clerk/nextjs"
+import NavigationBar from "@/components/NavigationBar"
+import LeftSidebar from "@/components/LeftSidebar"
+import RightSidebar from "@/components/RightSidebar"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -18,7 +21,17 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <main>
+            <LeftSidebar />
+            <section className="container">
+              <div className="w-full">{children}</div>
+            </section>
+            <RightSidebar />
+          </main>
+
+          <NavigationBar />
+        </body>
       </html>
     </ClerkProvider>
   )
