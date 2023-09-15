@@ -2,7 +2,7 @@ import React from 'react'
 
 const NavigationBar = () => {
   return (
-    <div>NavigationBar</div>
+    <div className='md:hidden'>NavigationBar</div>
   )
 }
 
