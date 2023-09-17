@@ -42,3 +42,12 @@ export async function updateUser({
     throw new Error('Something went wrong' + error)
   }
 }
+
+export async function fetchUser(userId: string) {
+  try {
+    connectDB()
+    return await User.findOne({ id: userId })
+  } catch (error) {
+    throw new Error('Something went wrong' + error)
+  }
+}
