@@ -22,19 +22,23 @@ export async function updateUser({
   bio,
   path,
 }: Params) {
-  connectDB()
-  await User.findOneAndUpdate(
-    { id: userId },
-    {
-      email,
-      name,
-      image,
-      bio,
-    },
-    { upsert: true }
-  )
-
-  if (path === "/profile/edit") {
-    revalidatePath(path)
+  try {
+    connectDB()
+    await User.findOneAndUpdate(
+      { id: userId },
+      {
+        email,
+        name,
+        image,
+        bio,
+      },
+      { upsert: true }
+    )
+  
+    if (path === "/profile/edit") {
+      revalidatePath(path)
+    }
+  } catch (error) {
+    throw new Error('Something went wrong' + error)
   }
 }
