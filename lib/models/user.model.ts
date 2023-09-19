@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema({
   image: String,
   threads: [
     {
-        id: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Threads'
     }
   ]
